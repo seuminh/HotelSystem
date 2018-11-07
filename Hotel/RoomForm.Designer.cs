@@ -28,12 +28,20 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.panelRoom = new System.Windows.Forms.Panel();
+            this.rdbAllRoom = new System.Windows.Forms.RadioButton();
+            this.rdbOccupiedRoom = new System.Windows.Forms.RadioButton();
+            this.rdbAvailableRoom = new System.Windows.Forms.RadioButton();
             this.lstRoom = new System.Windows.Forms.ListView();
             this.colRoomNo = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.colRoomType = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.colFloor = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.colStatus = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.menuRoom = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.showAvailableRoomToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.showOccupiedRoomToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.showAllRoomsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Label2 = new System.Windows.Forms.Label();
             this.btnUpdateRoom = new System.Windows.Forms.Button();
             this.btnAddRoom = new System.Windows.Forms.Button();
@@ -62,18 +70,61 @@
             this.btnClose = new System.Windows.Forms.Button();
             this.btnMin = new System.Windows.Forms.Button();
             this.panelRoom.SuspendLayout();
+            this.menuRoom.SuspendLayout();
             this.panelUpdateRoom.SuspendLayout();
             this.panelAddRoom.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelRoom
             // 
+            this.panelRoom.Controls.Add(this.rdbAllRoom);
+            this.panelRoom.Controls.Add(this.rdbOccupiedRoom);
+            this.panelRoom.Controls.Add(this.rdbAvailableRoom);
             this.panelRoom.Controls.Add(this.lstRoom);
             this.panelRoom.Controls.Add(this.Label2);
             this.panelRoom.Location = new System.Drawing.Point(155, 56);
             this.panelRoom.Name = "panelRoom";
             this.panelRoom.Size = new System.Drawing.Size(807, 484);
             this.panelRoom.TabIndex = 5;
+            // 
+            // rdbAllRoom
+            // 
+            this.rdbAllRoom.AutoSize = true;
+            this.rdbAllRoom.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rdbAllRoom.Location = new System.Drawing.Point(628, 284);
+            this.rdbAllRoom.Name = "rdbAllRoom";
+            this.rdbAllRoom.Size = new System.Drawing.Size(90, 22);
+            this.rdbAllRoom.TabIndex = 11;
+            this.rdbAllRoom.TabStop = true;
+            this.rdbAllRoom.Text = "All Room";
+            this.rdbAllRoom.UseVisualStyleBackColor = true;
+            this.rdbAllRoom.CheckedChanged += new System.EventHandler(this.rdbAllRoom_CheckedChanged);
+            // 
+            // rdbOccupiedRoom
+            // 
+            this.rdbOccupiedRoom.AutoSize = true;
+            this.rdbOccupiedRoom.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rdbOccupiedRoom.Location = new System.Drawing.Point(628, 240);
+            this.rdbOccupiedRoom.Name = "rdbOccupiedRoom";
+            this.rdbOccupiedRoom.Size = new System.Drawing.Size(138, 22);
+            this.rdbOccupiedRoom.TabIndex = 10;
+            this.rdbOccupiedRoom.TabStop = true;
+            this.rdbOccupiedRoom.Text = "Occupied Room";
+            this.rdbOccupiedRoom.UseVisualStyleBackColor = true;
+            this.rdbOccupiedRoom.CheckedChanged += new System.EventHandler(this.rdbOccupiedRoom_CheckedChanged);
+            // 
+            // rdbAvailableRoom
+            // 
+            this.rdbAvailableRoom.AutoSize = true;
+            this.rdbAvailableRoom.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rdbAvailableRoom.Location = new System.Drawing.Point(628, 197);
+            this.rdbAvailableRoom.Name = "rdbAvailableRoom";
+            this.rdbAvailableRoom.Size = new System.Drawing.Size(132, 22);
+            this.rdbAvailableRoom.TabIndex = 9;
+            this.rdbAvailableRoom.TabStop = true;
+            this.rdbAvailableRoom.Text = "Available Room";
+            this.rdbAvailableRoom.UseVisualStyleBackColor = true;
+            this.rdbAvailableRoom.CheckedChanged += new System.EventHandler(this.rdbAvailableRoom_CheckedChanged);
             // 
             // lstRoom
             // 
@@ -83,6 +134,7 @@
             this.colRoomType,
             this.colFloor,
             this.colStatus});
+            this.lstRoom.ContextMenuStrip = this.menuRoom;
             this.lstRoom.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lstRoom.FullRowSelect = true;
             this.lstRoom.GridLines = true;
@@ -90,7 +142,7 @@
             this.lstRoom.Location = new System.Drawing.Point(48, 88);
             this.lstRoom.MultiSelect = false;
             this.lstRoom.Name = "lstRoom";
-            this.lstRoom.Size = new System.Drawing.Size(705, 367);
+            this.lstRoom.Size = new System.Drawing.Size(560, 367);
             this.lstRoom.TabIndex = 8;
             this.lstRoom.TileSize = new System.Drawing.Size(300, 50);
             this.lstRoom.UseCompatibleStateImageBehavior = false;
@@ -99,28 +151,59 @@
             // colRoomNo
             // 
             this.colRoomNo.Text = "Room No";
-            this.colRoomNo.Width = 200;
+            this.colRoomNo.Width = 100;
             // 
             // colRoomType
             // 
             this.colRoomType.Text = "Room Type";
-            this.colRoomType.Width = 200;
+            this.colRoomType.Width = 160;
             // 
             // colFloor
             // 
             this.colFloor.Text = "Floor";
-            this.colFloor.Width = 100;
+            this.colFloor.Width = 130;
             // 
             // colStatus
             // 
             this.colStatus.Text = "Status";
-            this.colStatus.Width = 200;
+            this.colStatus.Width = 160;
+            // 
+            // menuRoom
+            // 
+            this.menuRoom.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.menuRoom.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.showAvailableRoomToolStripMenuItem,
+            this.showOccupiedRoomToolStripMenuItem,
+            this.showAllRoomsToolStripMenuItem});
+            this.menuRoom.Name = "menuRoom";
+            this.menuRoom.Size = new System.Drawing.Size(228, 76);
+            // 
+            // showAvailableRoomToolStripMenuItem
+            // 
+            this.showAvailableRoomToolStripMenuItem.Name = "showAvailableRoomToolStripMenuItem";
+            this.showAvailableRoomToolStripMenuItem.Size = new System.Drawing.Size(227, 24);
+            this.showAvailableRoomToolStripMenuItem.Text = "Show Available rooms";
+            this.showAvailableRoomToolStripMenuItem.Click += new System.EventHandler(this.showAvailableRoomToolStripMenuItem_Click);
+            // 
+            // showOccupiedRoomToolStripMenuItem
+            // 
+            this.showOccupiedRoomToolStripMenuItem.Name = "showOccupiedRoomToolStripMenuItem";
+            this.showOccupiedRoomToolStripMenuItem.Size = new System.Drawing.Size(227, 24);
+            this.showOccupiedRoomToolStripMenuItem.Text = "Show Occupied rooms";
+            this.showOccupiedRoomToolStripMenuItem.Click += new System.EventHandler(this.showOccupiedRoomToolStripMenuItem_Click);
+            // 
+            // showAllRoomsToolStripMenuItem
+            // 
+            this.showAllRoomsToolStripMenuItem.Name = "showAllRoomsToolStripMenuItem";
+            this.showAllRoomsToolStripMenuItem.Size = new System.Drawing.Size(227, 24);
+            this.showAllRoomsToolStripMenuItem.Text = "Show All rooms";
+            this.showAllRoomsToolStripMenuItem.Click += new System.EventHandler(this.showAllRoomsToolStripMenuItem_Click);
             // 
             // Label2
             // 
             this.Label2.AutoSize = true;
             this.Label2.Font = new System.Drawing.Font("Monotype Corsiva", 25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label2.Location = new System.Drawing.Point(324, 17);
+            this.Label2.Location = new System.Drawing.Point(259, 23);
             this.Label2.Name = "Label2";
             this.Label2.Size = new System.Drawing.Size(107, 51);
             this.Label2.TabIndex = 7;
@@ -398,9 +481,9 @@
             this.btnClose.FlatAppearance.BorderSize = 0;
             this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClose.Image = global::Hotel.Properties.Resources.cancel;
-            this.btnClose.Location = new System.Drawing.Point(920, 2);
+            this.btnClose.Location = new System.Drawing.Point(932, 2);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(42, 32);
+            this.btnClose.Size = new System.Drawing.Size(30, 21);
             this.btnClose.TabIndex = 36;
             this.btnClose.UseVisualStyleBackColor = false;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
@@ -412,9 +495,9 @@
             this.btnMin.FlatAppearance.BorderSize = 0;
             this.btnMin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnMin.Image = global::Hotel.Properties.Resources.minus_symbol;
-            this.btnMin.Location = new System.Drawing.Point(866, 2);
+            this.btnMin.Location = new System.Drawing.Point(896, 2);
             this.btnMin.Name = "btnMin";
-            this.btnMin.Size = new System.Drawing.Size(42, 32);
+            this.btnMin.Size = new System.Drawing.Size(30, 21);
             this.btnMin.TabIndex = 35;
             this.btnMin.UseVisualStyleBackColor = true;
             this.btnMin.Click += new System.EventHandler(this.btnMin_Click);
@@ -440,6 +523,7 @@
             this.Load += new System.EventHandler(this.RoomForm_Load);
             this.panelRoom.ResumeLayout(false);
             this.panelRoom.PerformLayout();
+            this.menuRoom.ResumeLayout(false);
             this.panelUpdateRoom.ResumeLayout(false);
             this.panelUpdateRoom.PerformLayout();
             this.panelAddRoom.ResumeLayout(false);
@@ -483,5 +567,12 @@
         private System.Windows.Forms.Button btnMin;
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.Button btnMainMenu;
+        private System.Windows.Forms.RadioButton rdbAllRoom;
+        private System.Windows.Forms.RadioButton rdbOccupiedRoom;
+        private System.Windows.Forms.RadioButton rdbAvailableRoom;
+        private System.Windows.Forms.ContextMenuStrip menuRoom;
+        private System.Windows.Forms.ToolStripMenuItem showAvailableRoomToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem showOccupiedRoomToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem showAllRoomsToolStripMenuItem;
     }
 }
