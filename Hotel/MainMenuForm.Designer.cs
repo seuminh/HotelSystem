@@ -32,23 +32,23 @@
             this.panelRoom = new System.Windows.Forms.Panel();
             this.lblDetail1 = new System.Windows.Forms.Label();
             this.lblRoom = new System.Windows.Forms.Label();
-            this.picRoom = new System.Windows.Forms.PictureBox();
             this.panelGuest = new System.Windows.Forms.Panel();
             this.lblDetail2 = new System.Windows.Forms.Label();
             this.lblGuest = new System.Windows.Forms.Label();
-            this.picGuest = new System.Windows.Forms.PictureBox();
             this.panelStaff = new System.Windows.Forms.Panel();
             this.lblDetail3 = new System.Windows.Forms.Label();
             this.lblStaff = new System.Windows.Forms.Label();
             this.picStaff = new System.Windows.Forms.PictureBox();
+            this.picGuest = new System.Windows.Forms.PictureBox();
+            this.picRoom = new System.Windows.Forms.PictureBox();
             this.btnMin = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
             this.panelRoom.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picRoom)).BeginInit();
             this.panelGuest.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picGuest)).BeginInit();
             this.panelStaff.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picStaff)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picGuest)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picRoom)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -70,6 +70,7 @@
             this.panelRoom.Name = "panelRoom";
             this.panelRoom.Size = new System.Drawing.Size(190, 88);
             this.panelRoom.TabIndex = 3;
+            this.panelRoom.Click += new System.EventHandler(this.panelRoom_Click);
             this.panelRoom.MouseEnter += new System.EventHandler(this.panelRoom_MouseEnter);
             this.panelRoom.MouseLeave += new System.EventHandler(this.panelRoom_MouseLeave);
             // 
@@ -83,6 +84,7 @@
             this.lblDetail1.Size = new System.Drawing.Size(108, 15);
             this.lblDetail1.TabIndex = 5;
             this.lblDetail1.Text = "Check,Add,Update";
+            this.lblDetail1.Click += new System.EventHandler(this.lblDetail1_Click);
             this.lblDetail1.MouseEnter += new System.EventHandler(this.lblDetail1_MouseEnter);
             // 
             // lblRoom
@@ -94,18 +96,8 @@
             this.lblRoom.Size = new System.Drawing.Size(53, 20);
             this.lblRoom.TabIndex = 4;
             this.lblRoom.Text = "Room";
+            this.lblRoom.Click += new System.EventHandler(this.lblRoom_Click);
             this.lblRoom.MouseEnter += new System.EventHandler(this.lblRoom_MouseEnter);
-            // 
-            // picRoom
-            // 
-            this.picRoom.Image = global::Hotel.Properties.Resources.room;
-            this.picRoom.Location = new System.Drawing.Point(20, 18);
-            this.picRoom.Name = "picRoom";
-            this.picRoom.Size = new System.Drawing.Size(46, 54);
-            this.picRoom.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.picRoom.TabIndex = 4;
-            this.picRoom.TabStop = false;
-            this.picRoom.MouseEnter += new System.EventHandler(this.picRoom_MouseEnter);
             // 
             // panelGuest
             // 
@@ -141,17 +133,6 @@
             this.lblGuest.TabIndex = 4;
             this.lblGuest.Text = "Guest";
             this.lblGuest.MouseEnter += new System.EventHandler(this.lblGuest_MouseEnter);
-            // 
-            // picGuest
-            // 
-            this.picGuest.Image = global::Hotel.Properties.Resources.guest;
-            this.picGuest.Location = new System.Drawing.Point(20, 18);
-            this.picGuest.Name = "picGuest";
-            this.picGuest.Size = new System.Drawing.Size(46, 54);
-            this.picGuest.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.picGuest.TabIndex = 4;
-            this.picGuest.TabStop = false;
-            this.picGuest.MouseEnter += new System.EventHandler(this.picGuest_MouseEnter);
             // 
             // panelStaff
             // 
@@ -199,6 +180,29 @@
             this.picStaff.TabStop = false;
             this.picStaff.MouseEnter += new System.EventHandler(this.picStaff_MouseEnter);
             // 
+            // picGuest
+            // 
+            this.picGuest.Image = global::Hotel.Properties.Resources.guest;
+            this.picGuest.Location = new System.Drawing.Point(20, 18);
+            this.picGuest.Name = "picGuest";
+            this.picGuest.Size = new System.Drawing.Size(46, 54);
+            this.picGuest.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.picGuest.TabIndex = 4;
+            this.picGuest.TabStop = false;
+            this.picGuest.MouseEnter += new System.EventHandler(this.picGuest_MouseEnter);
+            // 
+            // picRoom
+            // 
+            this.picRoom.Image = global::Hotel.Properties.Resources.room;
+            this.picRoom.Location = new System.Drawing.Point(20, 18);
+            this.picRoom.Name = "picRoom";
+            this.picRoom.Size = new System.Drawing.Size(46, 54);
+            this.picRoom.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.picRoom.TabIndex = 4;
+            this.picRoom.TabStop = false;
+            this.picRoom.Click += new System.EventHandler(this.picRoom_Click);
+            this.picRoom.MouseEnter += new System.EventHandler(this.picRoom_MouseEnter);
+            // 
             // btnMin
             // 
             this.btnMin.FlatAppearance.BorderSize = 0;
@@ -243,13 +247,13 @@
             this.Text = "Form1";
             this.panelRoom.ResumeLayout(false);
             this.panelRoom.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picRoom)).EndInit();
             this.panelGuest.ResumeLayout(false);
             this.panelGuest.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picGuest)).EndInit();
             this.panelStaff.ResumeLayout(false);
             this.panelStaff.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picStaff)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picGuest)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picRoom)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

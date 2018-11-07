@@ -10,6 +10,47 @@ using System.Windows.Forms;
 
 namespace Hotel
 {
+    #region // struct Room and Guest
+    public struct Room
+    {
+        public string id { get; set; }
+        public string type { get; set; }
+        public string floor { get; set; }
+        public string status { get; set; }
+
+        public Room(string d, string t, string f, string s)
+        {
+            id = d;
+            type = t;
+            floor = f;
+            status = s;
+        }
+    }
+
+    public struct Guest
+    {
+        public string id { get; set; }
+        public string name { get; set; }
+        public string phoneNum { get; set; }
+        public string roomType { get; set; }
+        public string duration { get; set; }
+        public string roomNum { get; set; }
+        public string checkIn { get; set; }
+        public string checkOut { get; set; }
+
+        public Guest(string d, string n, string p, string r, string t, string du, string In, string Out)
+        {
+            id = d;
+            name = n;
+            phoneNum = p;
+            roomNum = r;
+            roomType = t;
+            duration = du;
+            checkIn = In;
+            checkOut = Out;
+        }
+    }
+    #endregion
     public partial class MainMenuForm : Form
     {
         public MainMenuForm()
@@ -42,6 +83,25 @@ namespace Hotel
             panelRoom.BorderStyle = BorderStyle.None;
         }
 
+        private void panelRoom_Click(object sender, EventArgs e)
+        {
+            OpenRoomForm();
+        }
+
+        private void picRoom_Click(object sender, EventArgs e)
+        {
+            OpenRoomForm();
+        }
+
+        private void lblRoom_Click(object sender, EventArgs e)
+        {
+            OpenRoomForm();
+        }
+
+        private void lblDetail1_Click(object sender, EventArgs e)
+        {
+            OpenRoomForm();
+        }
         #endregion
 
         #region //Panel Guest
@@ -107,7 +167,7 @@ namespace Hotel
 
         private void btnClose_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Application.Exit();
         }
 
         private void btnClose_MouseLeave(object sender, EventArgs e)
@@ -120,5 +180,18 @@ namespace Hotel
             this.WindowState = FormWindowState.Minimized;
         }
         #endregion
+
+       
+
+
+        //methods
+        void OpenRoomForm()
+        {
+            this.Hide();
+            RoomForm roomForm = new RoomForm();
+            roomForm.Show();
+        }
+
+       
     }
 }
