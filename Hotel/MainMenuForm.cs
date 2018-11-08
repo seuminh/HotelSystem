@@ -54,13 +54,14 @@ namespace Hotel
     public partial class MainMenuForm : Form
     {
         List<Room> room = new List<Room>();
-       
-        public MainMenuForm(List<Room> room1)
+        List<Guest> guest = new List<Guest>();
+        public MainMenuForm(List<Room> room1, List<Guest> guest1)
         {
             if (room1.Count == 0)
                 CreateRoomList();
             else
                 room = room1;
+            guest = guest1;
             InitializeComponent();
         }
         #region //Panel Room
@@ -136,6 +137,25 @@ namespace Hotel
             panelGuest.BorderStyle = BorderStyle.None;
         }
 
+        private void panelGuest_Click(object sender, EventArgs e)
+        {
+            OpenGuestForm();
+        }
+
+        private void picGuest_Click(object sender, EventArgs e)
+        {
+            OpenGuestForm();
+        }
+
+        private void lblGuest_Click(object sender, EventArgs e)
+        {
+            OpenGuestForm();
+        }
+
+        private void lblDetail2_Click(object sender, EventArgs e)
+        {
+            OpenGuestForm();
+        }
         #endregion
 
         #region // Panel Staff
@@ -194,10 +214,16 @@ namespace Hotel
         void OpenRoomForm()
         {
             this.Hide();
-            RoomForm roomForm = new RoomForm(room);
+            RoomForm roomForm = new RoomForm(room,guest);
             roomForm.Show();
         }
 
+        void OpenGuestForm()
+        {
+            this.Hide();
+            GuestForm guestForm = new GuestForm(room,guest);
+            guestForm.Show();
+        }
         //Create room
         void CreateRoomList()
         {
@@ -218,5 +244,6 @@ namespace Hotel
 
         }
 
+      
     }
 }

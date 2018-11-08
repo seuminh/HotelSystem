@@ -481,9 +481,9 @@
             this.btnClose.FlatAppearance.BorderSize = 0;
             this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClose.Image = global::Hotel.Properties.Resources.cancel;
-            this.btnClose.Location = new System.Drawing.Point(932, 2);
+            this.btnClose.Location = new System.Drawing.Point(931, 3);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(30, 21);
+            this.btnClose.Size = new System.Drawing.Size(31, 30);
             this.btnClose.TabIndex = 36;
             this.btnClose.UseVisualStyleBackColor = false;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
@@ -495,9 +495,9 @@
             this.btnMin.FlatAppearance.BorderSize = 0;
             this.btnMin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnMin.Image = global::Hotel.Properties.Resources.minus_symbol;
-            this.btnMin.Location = new System.Drawing.Point(896, 2);
+            this.btnMin.Location = new System.Drawing.Point(895, 3);
             this.btnMin.Name = "btnMin";
-            this.btnMin.Size = new System.Drawing.Size(30, 21);
+            this.btnMin.Size = new System.Drawing.Size(31, 30);
             this.btnMin.TabIndex = 35;
             this.btnMin.UseVisualStyleBackColor = true;
             this.btnMin.Click += new System.EventHandler(this.btnMin_Click);
@@ -506,7 +506,7 @@
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.SystemColors.Window;
-            this.ClientSize = new System.Drawing.Size(968, 565);
+            this.ClientSize = new System.Drawing.Size(965, 565);
             this.Controls.Add(this.btnMainMenu);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.btnMin);

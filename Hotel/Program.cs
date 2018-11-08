@@ -15,9 +15,10 @@ namespace Hotel
         static void Main()
         {
             List<Room> room = new List<Room>();
+            List<Guest> guest = new List<Guest>();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MainMenuForm(room));
+            Application.Run(new MainMenuForm(room,guest));
         }
     }
 }

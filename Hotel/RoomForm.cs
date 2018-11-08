@@ -13,10 +13,12 @@ namespace Hotel
     public partial class RoomForm : Form
     {
         List<Room> room =new List<Room>();
+        List<Guest> guest = new List<Guest>();
 
-        public RoomForm(List<Room> room1)
+        public RoomForm(List<Room> room1, List<Guest> guest1)
         {
             room = room1;
+            guest = guest1;
             InitializeComponent();
         }
 
@@ -171,7 +173,7 @@ namespace Hotel
         void OpenMainForm()
         {
             this.Close();
-            MainMenuForm mainMenuForm = new MainMenuForm(room);
+            MainMenuForm mainMenuForm = new MainMenuForm(room,guest);
             mainMenuForm.Show();
         }
 
