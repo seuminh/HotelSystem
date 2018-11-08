@@ -183,6 +183,26 @@ namespace Hotel
         {
             panelStaff.BorderStyle = BorderStyle.None;
         }
+
+        private void panelStaff_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("9.99$ to unlock this feature");
+        }
+
+        private void picStaff_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("9.99$ to unlock this feature");
+        }
+
+        private void lblStaff_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("9.99$ to unlock this feature");
+        }
+
+        private void lblDetail3_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("9.99$ to unlock this feature");
+        }
         #endregion
 
         #region //Close and Min Button
@@ -244,6 +264,6 @@ namespace Hotel
 
         }
 
-      
+       
     }
 }

@@ -170,6 +170,7 @@
             this.panelStaff.Name = "panelStaff";
             this.panelStaff.Size = new System.Drawing.Size(190, 88);
             this.panelStaff.TabIndex = 6;
+            this.panelStaff.Click += new System.EventHandler(this.panelStaff_Click);
             this.panelStaff.MouseEnter += new System.EventHandler(this.panelStaff_MouseEnter);
             this.panelStaff.MouseLeave += new System.EventHandler(this.panelStaff_MouseLeave);
             // 
@@ -183,6 +184,7 @@
             this.lblDetail3.Size = new System.Drawing.Size(108, 15);
             this.lblDetail3.TabIndex = 5;
             this.lblDetail3.Text = "Staff Management";
+            this.lblDetail3.Click += new System.EventHandler(this.lblDetail3_Click);
             this.lblDetail3.MouseEnter += new System.EventHandler(this.lblDetail3_MouseEnter);
             // 
             // lblStaff
@@ -194,6 +196,7 @@
             this.lblStaff.Size = new System.Drawing.Size(44, 20);
             this.lblStaff.TabIndex = 4;
             this.lblStaff.Text = "Staff";
+            this.lblStaff.Click += new System.EventHandler(this.lblStaff_Click);
             this.lblStaff.MouseEnter += new System.EventHandler(this.lblStaff_MouseEnter);
             // 
             // picStaff
@@ -205,6 +208,7 @@
             this.picStaff.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.picStaff.TabIndex = 4;
             this.picStaff.TabStop = false;
+            this.picStaff.Click += new System.EventHandler(this.picStaff_Click);
             this.picStaff.MouseEnter += new System.EventHandler(this.picStaff_MouseEnter);
             // 
             // btnMin
