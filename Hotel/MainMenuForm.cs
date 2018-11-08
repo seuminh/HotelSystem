@@ -53,8 +53,14 @@ namespace Hotel
     #endregion
     public partial class MainMenuForm : Form
     {
-        public MainMenuForm()
+        List<Room> room = new List<Room>();
+       
+        public MainMenuForm(List<Room> room1)
         {
+            if (room1.Count == 0)
+                CreateRoomList();
+            else
+                room = room1;
             InitializeComponent();
         }
         #region //Panel Room
@@ -188,9 +194,29 @@ namespace Hotel
         void OpenRoomForm()
         {
             this.Hide();
-            RoomForm roomForm = new RoomForm();
+            RoomForm roomForm = new RoomForm(room);
             roomForm.Show();
         }
-       
+
+        //Create room
+        void CreateRoomList()
+        {
+            room.Add(new Room("101", "single", "1", "Available"));
+            room.Add(new Room("102", "double", "1", "Available"));
+            room.Add(new Room("103", "triple", "1", "Available"));
+            room.Add(new Room("104", "quad", "1", "Available"));
+
+            room.Add(new Room("201", "single", "2", "Available"));
+            room.Add(new Room("202", "double", "2", "Available"));
+            room.Add(new Room("203", "triple", "2", "Available"));
+            room.Add(new Room("204", "quad", "2", "Available"));
+
+            room.Add(new Room("301", "single", "3", "Available"));
+            room.Add(new Room("302", "double", "3", "Available"));
+            room.Add(new Room("303", "triple", "3", "Available"));
+            room.Add(new Room("304", "quad", "3", "Available"));
+
+        }
+
     }
 }

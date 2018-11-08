@@ -14,9 +14,10 @@ namespace Hotel
         [STAThread]
         static void Main()
         {
+            List<Room> room = new List<Room>();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MainMenuForm());
+            Application.Run(new MainMenuForm(room));
         }
     }
 }

@@ -12,18 +12,20 @@ namespace Hotel
 {
     public partial class RoomForm : Form
     {
-        List<Room> room = new List<Room>();
+        List<Room> room =new List<Room>();
 
-        public RoomForm()
+        public RoomForm(List<Room> room1)
         {
+            room = room1;
             InitializeComponent();
-            CreateRoomList();
         }
 
         // form Load
         private void RoomForm_Load(object sender, EventArgs e)
         {
             btnRoom_Click(sender, e);
+            RefreshRoomList();
+            rdbAllRoom.Checked = true;
             this.lstRoom.ColumnWidthChanging += new ColumnWidthChangingEventHandler(lstRoom_ColumnWidthChanging);
         }
 
@@ -169,43 +171,44 @@ namespace Hotel
         void OpenMainForm()
         {
             this.Close();
-            MainMenuForm mainMenuForm = new MainMenuForm();
+            MainMenuForm mainMenuForm = new MainMenuForm(room);
             mainMenuForm.Show();
         }
 
-            //Create room
-        void CreateRoomList()
-        {
-            room.Add(new Room("101", "single", "1", "Available"));
-            room.Add(new Room("102", "double", "1", "Available"));
-            room.Add(new Room("103", "triple", "1", "Available"));
-            room.Add(new Room("104", "quad", "1", "Available"));
-
-            room.Add(new Room("201", "single", "2", "Available"));
-            room.Add(new Room("202", "double", "2", "Available"));
-            room.Add(new Room("203", "triple", "2", "Available"));
-            room.Add(new Room("204", "quad", "2", "Available"));
-
-            room.Add(new Room("301", "single", "3", "Available"));
-            room.Add(new Room("302", "double", "3", "Available"));
-            room.Add(new Room("303", "triple", "3", "Available"));
-            room.Add(new Room("304", "quad", "3", "Available"));
-
-            RefreshRoomList();
-        }
            // Add New Room
         void AddRoom()
         {
             if (txtAddRoomId.Text != "" && txtAddRoomFloor.Text != "" && cboAddRoomType.Text != "")
             {
-                room.Add(new Room(txtAddRoomId.Text, cboAddRoomType.Text.ToLower(), txtAddRoomFloor.Text, "Available"));
-                MessageBox.Show("New Room Added");
-                panelRoom.BringToFront();
+                if (RoomDuplicate(txtAddRoomId.Text) == false)
+                {
+                    room.Add(new Room(txtAddRoomId.Text, cboAddRoomType.Text.ToLower(), txtAddRoomFloor.Text, "Available"));
+                    MessageBox.Show("New Room Added");
+                    panelRoom.BringToFront();
+                }
+                else
+                {
+                    MessageBox.Show("This Room ID is match with other Room ID");
+                    txtAddRoomFloor.Clear();
+                    txtAddRoomId.Clear();
+                    cboAddRoomType.Text = "";
+                }
             }
             else
                 MessageBox.Show("Enter All Info");
         }
 
+           // Check Room ID Duplicate 
+        bool RoomDuplicate(string str)
+        {
+            int len = room.Count;
+            for(int i =0; i < len; i++)
+            {
+                if (room[i].id.ToString() == str) return true;
+            }
+            return false;
+        }
+    
            // Refresh Room List when Guest Has Checked In
         void RefreshRoomList()
         {
