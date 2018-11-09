@@ -306,10 +306,10 @@
             this.cboRoomTypeUpdateRoom.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboRoomTypeUpdateRoom.FormattingEnabled = true;
             this.cboRoomTypeUpdateRoom.Items.AddRange(new object[] {
-            "single",
-            "double",
-            "triple",
-            "quad"});
+            "Single",
+            "Double",
+            "Triple",
+            "Quad"});
             this.cboRoomTypeUpdateRoom.Location = new System.Drawing.Point(343, 228);
             this.cboRoomTypeUpdateRoom.Name = "cboRoomTypeUpdateRoom";
             this.cboRoomTypeUpdateRoom.Size = new System.Drawing.Size(230, 33);
@@ -398,10 +398,10 @@
             this.cboAddRoomType.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboAddRoomType.FormattingEnabled = true;
             this.cboAddRoomType.Items.AddRange(new object[] {
-            "single",
-            "double",
-            "triple",
-            "quad"});
+            "Single",
+            "Double",
+            "Triple",
+            "Quad"});
             this.cboAddRoomType.Location = new System.Drawing.Point(343, 223);
             this.cboAddRoomType.Name = "cboAddRoomType";
             this.cboAddRoomType.Size = new System.Drawing.Size(230, 33);

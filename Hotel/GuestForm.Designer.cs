@@ -44,9 +44,9 @@
             this.colCheckIn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.colCheckOut = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.menuGuest = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.showAllGuestsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.showCurrentGuestToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.showOldGuestToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.showAllGuestsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label1 = new System.Windows.Forms.Label();
             this.btnClose = new System.Windows.Forms.Button();
             this.btnMin = new System.Windows.Forms.Button();
@@ -239,13 +239,6 @@
             this.menuGuest.Name = "menuGuest";
             this.menuGuest.Size = new System.Drawing.Size(211, 76);
             // 
-            // showAllGuestsToolStripMenuItem
-            // 
-            this.showAllGuestsToolStripMenuItem.Name = "showAllGuestsToolStripMenuItem";
-            this.showAllGuestsToolStripMenuItem.Size = new System.Drawing.Size(210, 24);
-            this.showAllGuestsToolStripMenuItem.Text = "Show all guests";
-            this.showAllGuestsToolStripMenuItem.Click += new System.EventHandler(this.showAllGuestsToolStripMenuItem_Click);
-            // 
             // showCurrentGuestToolStripMenuItem
             // 
             this.showCurrentGuestToolStripMenuItem.Name = "showCurrentGuestToolStripMenuItem";
@@ -259,6 +252,13 @@
             this.showOldGuestToolStripMenuItem.Size = new System.Drawing.Size(210, 24);
             this.showOldGuestToolStripMenuItem.Text = "Show old guests";
             this.showOldGuestToolStripMenuItem.Click += new System.EventHandler(this.showOldGuestToolStripMenuItem_Click);
+            // 
+            // showAllGuestsToolStripMenuItem
+            // 
+            this.showAllGuestsToolStripMenuItem.Name = "showAllGuestsToolStripMenuItem";
+            this.showAllGuestsToolStripMenuItem.Size = new System.Drawing.Size(210, 24);
+            this.showAllGuestsToolStripMenuItem.Text = "Show all guests";
+            this.showAllGuestsToolStripMenuItem.Click += new System.EventHandler(this.showAllGuestsToolStripMenuItem_Click);
             // 
             // label1
             // 
@@ -398,11 +398,6 @@
             this.cboRoomType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboRoomType.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboRoomType.FormattingEnabled = true;
-            this.cboRoomType.Items.AddRange(new object[] {
-            "single",
-            "double",
-            "triple",
-            "quad"});
             this.cboRoomType.Location = new System.Drawing.Point(216, 309);
             this.cboRoomType.Name = "cboRoomType";
             this.cboRoomType.Size = new System.Drawing.Size(230, 33);

@@ -12,14 +12,17 @@ namespace Hotel
 {
     public partial class GuestForm : Form
     {
+        List<string> roomType = new List<string>();
         List<Room> room = new List<Room>();
         List<Guest> guest = new List<Guest>();
+        List<Staff> staff = new List<Staff>();
         int guestId;
 
-        public GuestForm(List<Room> room1, List<Guest> guest1)
+        public GuestForm(List<Room> room1, List<Guest> guest1, List<Staff> staff1)
         {
             room = room1;
             guest = guest1;
+            staff = staff1;
             guestId = guest.Count + 1;
             InitializeComponent();
         }
@@ -44,6 +47,7 @@ namespace Hotel
         {
             panelCheckIn.BringToFront();
             txtCheckInId.Text = guestId.ToString();
+            AddRoomType();
             btnNew_Click(sender, e);
         }
         private void button1_Click(object sender, EventArgs e)
@@ -202,7 +206,7 @@ namespace Hotel
         void OpenMainForm()
         {
             this.Close();
-            MainMenuForm mainMenuForm = new MainMenuForm(room,guest);
+            MainMenuForm mainMenuForm = new MainMenuForm(room,guest,staff);
             mainMenuForm.Show();
         }
 
@@ -380,6 +384,23 @@ namespace Hotel
             }
         }
 
-       
+        // Add room type for Combo Box
+        void AddRoomType()
+        {
+            int len = room.Count;
+            int itemCount = 0;
+            for(int i = 0; i < len; i++)
+            {
+                if (!roomType.Contains(room[i].type.ToString()))
+                {
+                    roomType.Add(room[i].type.ToString());
+                    itemCount++;
+                }
+            }
+            for(int j = 0; j < itemCount; j++)
+            {
+                cboRoomType.Items.Add(roomType[j].ToString());
+            }
+        }
     }
 }

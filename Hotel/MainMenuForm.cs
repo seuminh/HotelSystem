@@ -50,18 +50,48 @@ namespace Hotel
             checkOut = Out;
         }
     }
+
+    public struct Staff
+    {
+        public string id { get; set; }
+        public string name { get; set; }
+        public string sex { get; set; }
+        public string dob { get; set; }
+        public string pos { get; set; }
+        public string address { get; set; }
+        public string phoneNum { get; set; }
+        public string salary { get; set; }
+        public string hiredDate { get; set; }
+        public string resignDate { get; set; }
+
+        public Staff(string id_,string name_,string sex_,string dob_,string pos_,string address_,string phone_,string salary_,string hiredDate_,string resignDate_)
+        {
+            id = id_;
+            name = name_;
+            sex = sex_;
+            dob = dob_;
+            pos = pos_;
+            address = address_;
+            phoneNum = phone_;
+            salary = salary_;
+            hiredDate = hiredDate_;
+            resignDate = resignDate_;
+        }
+    }
     #endregion
     public partial class MainMenuForm : Form
     {
+        List<Staff> staff = new List<Staff>();
         List<Room> room = new List<Room>();
         List<Guest> guest = new List<Guest>();
-        public MainMenuForm(List<Room> room1, List<Guest> guest1)
+        public MainMenuForm(List<Room> room1, List<Guest> guest1,List<Staff> staff1)
         {
             if (room1.Count == 0)
                 CreateRoomList();
             else
                 room = room1;
             guest = guest1;
+            staff = staff1;
             InitializeComponent();
         }
         #region //Panel Room
@@ -186,22 +216,22 @@ namespace Hotel
 
         private void panelStaff_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("9.99$ to unlock this feature");
+            OpenStaffForm();
         }
 
         private void picStaff_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("9.99$ to unlock this feature");
+            OpenStaffForm();
         }
 
         private void lblStaff_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("9.99$ to unlock this feature");
+            OpenStaffForm();
         }
 
         private void lblDetail3_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("9.99$ to unlock this feature");
+            OpenStaffForm();
         }
         #endregion
 
@@ -234,33 +264,40 @@ namespace Hotel
         void OpenRoomForm()
         {
             this.Hide();
-            RoomForm roomForm = new RoomForm(room,guest);
+            RoomForm roomForm = new RoomForm(room,guest,staff);
             roomForm.Show();
         }
 
         void OpenGuestForm()
         {
             this.Hide();
-            GuestForm guestForm = new GuestForm(room,guest);
+            GuestForm guestForm = new GuestForm(room,guest,staff);
             guestForm.Show();
+        }
+
+        void OpenStaffForm()
+        {
+            this.Hide();
+            StaffForm staffForm = new StaffForm(room, guest,staff);
+            staffForm.Show();
         }
         //Create room
         void CreateRoomList()
         {
-            room.Add(new Room("101", "single", "1", "Available"));
-            room.Add(new Room("102", "double", "1", "Available"));
-            room.Add(new Room("103", "triple", "1", "Available"));
-            room.Add(new Room("104", "quad", "1", "Available"));
+            room.Add(new Room("101", "Single", "1", "Available"));
+            room.Add(new Room("102", "Double", "1", "Available"));
+            room.Add(new Room("103", "Triple", "1", "Available"));
+            room.Add(new Room("104", "Quad", "1", "Available"));
 
-            room.Add(new Room("201", "single", "2", "Available"));
-            room.Add(new Room("202", "double", "2", "Available"));
-            room.Add(new Room("203", "triple", "2", "Available"));
-            room.Add(new Room("204", "quad", "2", "Available"));
+            room.Add(new Room("201", "Single", "2", "Available"));
+            room.Add(new Room("202", "Double", "2", "Available"));
+            room.Add(new Room("203", "Triple", "2", "Available"));
+            room.Add(new Room("204", "Quad", "2", "Available"));
 
-            room.Add(new Room("301", "single", "3", "Available"));
-            room.Add(new Room("302", "double", "3", "Available"));
-            room.Add(new Room("303", "triple", "3", "Available"));
-            room.Add(new Room("304", "quad", "3", "Available"));
+            room.Add(new Room("301", "Single", "3", "Available"));
+            room.Add(new Room("302", "Double", "3", "Available"));
+            room.Add(new Room("303", "Triple", "3", "Available"));
+            room.Add(new Room("304", "Quad", "3", "Available"));
 
         }
 

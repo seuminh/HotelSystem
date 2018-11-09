@@ -12,13 +12,15 @@ namespace Hotel
 {
     public partial class RoomForm : Form
     {
+        List<Staff> staff = new List<Staff>();
         List<Room> room =new List<Room>();
         List<Guest> guest = new List<Guest>();
 
-        public RoomForm(List<Room> room1, List<Guest> guest1)
+        public RoomForm(List<Room> room1, List<Guest> guest1, List<Staff> staff1)
         {
             room = room1;
             guest = guest1;
+            staff = staff1;
             InitializeComponent();
         }
 
@@ -173,7 +175,7 @@ namespace Hotel
         void OpenMainForm()
         {
             this.Close();
-            MainMenuForm mainMenuForm = new MainMenuForm(room,guest);
+            MainMenuForm mainMenuForm = new MainMenuForm(room,guest,staff);
             mainMenuForm.Show();
         }
 
@@ -184,13 +186,13 @@ namespace Hotel
             {
                 if (RoomDuplicate(txtAddRoomId.Text) == false)
                 {
-                    room.Add(new Room(txtAddRoomId.Text, cboAddRoomType.Text.ToLower(), txtAddRoomFloor.Text, "Available"));
+                    room.Add(new Room(txtAddRoomId.Text, UppercaseFirst(cboAddRoomType.Text.Trim()), txtAddRoomFloor.Text, "Available"));
                     MessageBox.Show("New Room Added");
                     panelRoom.BringToFront();
                 }
                 else
                 {
-                    MessageBox.Show("This Room ID is match with other Room ID");
+                    MessageBox.Show("This Room ID is matched with other Room ID");
                     txtAddRoomFloor.Clear();
                     txtAddRoomId.Clear();
                     cboAddRoomType.Text = "";
@@ -235,7 +237,7 @@ namespace Hotel
                 {
                     if (room[i].id == cboRoomNoUpdateRoom.Text)
                     {
-                        room[i] = new Room(room[i].id, cboRoomTypeUpdateRoom.Text.ToLower(), room[i].floor, room[i].status);
+                        room[i] = new Room(room[i].id, UppercaseFirst(cboRoomTypeUpdateRoom.Text.Trim()), room[i].floor, room[i].status);
                         MessageBox.Show("Room Updated");
                         panelRoom.BringToFront();
                         break;
@@ -305,6 +307,12 @@ namespace Hotel
                     lstRoom.Items.Add(item);
                 }
             }
+        }
+
+        //Convert first letter to Uppercase
+        string UppercaseFirst(string str)
+        {
+            return char.ToUpper(str[0]) + str.Substring(1);
         }
     }
 }
